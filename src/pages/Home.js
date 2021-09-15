@@ -52,11 +52,11 @@ import { Link } from "react-router-dom";
 import Jumbotron from "../components/cards/Jumbotron";
 import NewArrivals from "../components/home/NewArrivals";
 import BestSellers from "../components/home/BestSellers";
-
-
-
+import CategoryList from "../components/category/CategoryList";
+import SubList from "../components/sub/SubList";
 
 import background from "../assets/background.png";
+import Footer from "../components/home/Footer";
 
 const useStyles = makeStyles((theme) => ({
   learnbutton: {
@@ -70,7 +70,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   background: {
-    marginTop:'65px',
+    marginTop: "65px",
     backgroundImage: `url(${background})`,
     backgroundPosition: "center",
     backgroundSize: "cover",
@@ -81,14 +81,13 @@ const useStyles = makeStyles((theme) => ({
   h1color: {
     color: theme.palette.common.purple,
   },
-  jumbotron : {
-    color : 'black', 
-    frontWeight: 'bold', 
-    fontSize:'80px', 
-    fontFamily: 'Helvetica Neue',
-    color: '#FF0000',
-
-  }
+  jumbotron: {
+    color: "black",
+    frontWeight: "bold",
+    fontSize: "80px",
+    fontFamily: "Helvetica Neue",
+    color: "#FF0000",
+  },
 }));
 
 export default function Home(props) {
@@ -97,32 +96,56 @@ export default function Home(props) {
   const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
-      <>
-      <Grid item container  className={classes.background}>  
-        <Grid item container direction='row' alignItems="center" justify='center'>
-          <Grid item  >
+    <>
+      <Grid item container className={classes.background}>
+        <Grid
+          item
+          container
+          direction="row"
+          alignItems="center"
+          justify="center"
+        >
+          <Grid item>
             <Typography className={classes.jumbotron}>
-          <Jumbotron text={["Latest Products", "New Arrivals", "Best Sellers"]} />        
+              <Jumbotron
+                text={["Latest Products", "New Arrivals", "Best Sellers"]}
+              />
             </Typography>
           </Grid>
         </Grid>
-      </Grid> 
-      <Grid item container>
-        <Grid item container justify='center'>
-        <Typography gutterBottom variant="h2">
-            New Arrivals 
-        </Typography> 
-        </Grid>
-      <NewArrivals />      
       </Grid>
       <Grid item container>
-        <Grid item container justify='center'>
-        <Typography gutterBottom variant="h2">
-            Best Sellers 
-        </Typography> 
+        <Grid item container justify="center">
+          <Typography gutterBottom variant="h2">
+            New Arrivals
+          </Typography>
         </Grid>
-      <BestSellers />     
+        <NewArrivals />
       </Grid>
-      </>
+      <Grid item container>
+        <Grid item container justify="center">
+          <Typography gutterBottom variant="h2">
+            Best Sellers
+          </Typography>
+        </Grid>
+        <BestSellers />
+      </Grid>
+      <h4 className="text-center p-3 mt-5 mb-5 display-4 jumbotron">
+        <Typography gutterBottom variant="h2">
+          Categories
+        </Typography>
+      </h4>
+      <CategoryList />
+
+      <h4 className="text-center  p-3 mt-5 mb-5 display-4  jumbotron ">
+        <Typography gutterBottom variant="h2">
+          Sub Categories
+        </Typography>
+      </h4>
+      <SubList />
+      <Grid item container>
+        <Footer />
+      </Grid>
+    </>
   );
 }

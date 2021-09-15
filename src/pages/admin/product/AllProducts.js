@@ -8,14 +8,18 @@ import { toast } from "react-toastify";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { useTheme } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   PaperSize: {
+    width: "100%",
     [theme.breakpoints.down("xs")]: {
       paddingLeft: "20px",
     },
   },
   CardItem: {
+    maxWidth: "400px",
     marginTop: "70px",
     [theme.breakpoints.down("md")]: {
       marginLeft: "10px",
@@ -31,8 +35,11 @@ const useStyles = makeStyles((theme) => ({
 
 const AllProducts = () => {
   const classes = useStyles();
+  const theme = useTheme();
+
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
+  const matches = useMediaQuery(theme.breakpoints.down("md"));
 
   const { user } = useSelector((state) => ({ ...state }));
 
@@ -82,16 +89,14 @@ const AllProducts = () => {
           ) : (
             <h4>All Products...</h4>
           )}
-          <Grid item container justify="space-evenly">
+          <Grid
+            item
+            container
+            direction={matches ? "column" : "row"}
+            alignItems={matches ? "center" : "space-evenly"}
+          >
             {products.map((product) => (
-              <Grid
-                item
-                key={product._id}
-                xs={12}
-                sm={6}
-                md={4}
-                className={classes.CardItem}
-              >
+              <Grid item key={product._id} xs={4} className={classes.CardItem}>
                 <AdminProductCard
                   product={product}
                   handleRemove={handleRemove}

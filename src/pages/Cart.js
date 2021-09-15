@@ -20,7 +20,8 @@ import { useTheme } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
   cardStyle: {
     marginLeft: "25px",
-    marginTop: "36px",
+    marginTop: "35px",
+
     width: "425px",
     [theme.breakpoints.down("md")]: {
       marginTop: "20px",

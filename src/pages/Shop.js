@@ -374,7 +374,7 @@ const Shop = () => {
       <Grid
         item
         xs={3}
-        style={{ marginTop: "82px" }}
+        style={{ marginTop: "100px" }}
         className={classes.Filters}
       >
         <Paper elevation={1} style={{ height: "100%" }}>
@@ -530,7 +530,7 @@ const Shop = () => {
             <Typography
               variant="h2"
               align="center"
-              style={{ marginTop: "10px" }}
+              style={{ marginTop: "100px" }}
             >
               <b>Products</b>
             </Typography>

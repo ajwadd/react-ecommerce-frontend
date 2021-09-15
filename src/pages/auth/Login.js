@@ -14,8 +14,17 @@ import Card from "@material-ui/core/Card";
 import Visibility from "@material-ui/icons/Visibility";
 import IconButton from "@material-ui/core/IconButton";
 import InputAdornment from "@material-ui/core/InputAdornment";
+import revolutionBackground from "../../assets/repeatingBackground.svg";
 
 const useStyles = makeStyles((theme) => ({
+  revolutionBackground: {
+    backgroundImage: `url(${revolutionBackground})`,
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    height: "100vh",
+    width: "100%",
+  },
   LoginDefault: {
     ...theme.typography.estimate,
     borderRadius: 50,
@@ -181,77 +190,78 @@ const Login = ({ history }) => {
       <br />
     </form>
   );
-
   return (
-    <Grid
-      item
-      container
-      direction="column"
-      alignItems="center"
-      style={{ marginTop: "90px" }}
-      xs={12}
-    >
-      <Card variant="outlined">
-        <Grid
-          item
-          container
-          direction="column"
-          alignItems="center"
-          style={{ marginTop: "20px" }}
-        >
-          {loading ? (
-            <Typography variant="h4">Loading...</Typography>
-          ) : (
-            <Typography variant="h4" align="center">
-              <b>Login</b>
-            </Typography>
-          )}
-        </Grid>
-        <Grid item container direction="column" alignItems="center">
+    <Grid item container className={classes.revolutionBackground}>
+      <Grid
+        item
+        container
+        direction="column"
+        alignItems="center"
+        style={{ marginTop: "150px" }}
+        xs={12}
+      >
+        <Card variant="outlined" style={{ borderRadius: "5%" }}>
+          <Grid
+            item
+            container
+            direction="column"
+            alignItems="center"
+            style={{ marginTop: "20px" }}
+          >
+            {loading ? (
+              <Typography variant="h4">Loading...</Typography>
+            ) : (
+              <Typography variant="h4" align="center">
+                <b>Login</b>
+              </Typography>
+            )}
+          </Grid>
           <Grid item container direction="column" alignItems="center">
-            {loginForm()}
-          </Grid>
+            <Grid item container direction="column" alignItems="center">
+              {loginForm()}
+            </Grid>
 
-          <Grid
-            item
-            container
-            justify="center"
-            style={{ marginBottom: "10px" }}
-          >
-            <Button
-              onClick={handleSubmit}
-              type="primary"
-              className={classes.LoginDefault}
-              size="large"
-              fullWidth
-              disabled={!email || password.length < 6}
+            <Grid
+              item
+              container
+              justify="center"
+              style={{ marginBottom: "10px" }}
             >
-              Login with Email/Password
-            </Button>
-          </Grid>
-          <Grid
-            item
-            container
-            justify="center"
-            style={{ marginBottom: "10px" }}
-          >
-            <Button
-              onClick={googleLogin}
-              variant="contained"
-              fullWidth
-              className={classes.LoginGoogle}
+              <Button
+                onClick={handleSubmit}
+                type="primary"
+                className={classes.LoginDefault}
+                size="large"
+                fullWidth
+                disabled={!email || password.length < 6}
+              >
+                Login with Email/Password
+              </Button>
+            </Grid>
+            <Grid
+              item
+              container
+              justify="center"
+              style={{ marginBottom: "10px" }}
             >
-              Login with Google
-            </Button>
-          </Grid>
+              <Button
+                onClick={googleLogin}
+                variant="contained"
+                fullWidth
+                className={classes.LoginGoogle}
+              >
+                Login with Google
+              </Button>
+            </Grid>
 
-          <Grid item container justify="center">
-            <Link to="/forgot/password" className="float-right text-danger">
-              <b>Forgot Password</b>
-            </Link>
+            <Grid item container justify="center">
+              <Link to="/forgot/password" className="float-right text-danger">
+                <b>Forgot Password</b>
+              </Link>
+            </Grid>
           </Grid>
-        </Grid>
-      </Card>
+        </Card>
+      </Grid>
     </Grid>
   );
 };

@@ -38,7 +38,7 @@ const Orders = ({ orders, handleStatusChange }) => {
         </TableHead>
         <TableBody>
           {order.products.map((p, i) => (
-            <TableRow key={p._id}>
+            <TableRow key={i}>
               <TableCell component="th" scope="row">
                 {p.product.title}
               </TableCell>

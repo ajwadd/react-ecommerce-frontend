@@ -49,6 +49,7 @@ const ProductUpdate = ({ match, history }) => {
       // 1 load single proudct
       setValues({ ...values, ...p.data });
       // 2 load single product category subs
+      console.log(p.data.category._id);
       getCategorySubs(p.data.category._id).then((res) => {
         setSubOptions(res.data); // on first load, show default subs
       });
